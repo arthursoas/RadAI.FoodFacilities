@@ -1,4 +1,4 @@
-﻿namespace RadAI.FoodFacilities.Domain.Entities
+﻿namespace RadAI.FoodFacilities.DTOs.Entities
 {
     public class Permit
     {

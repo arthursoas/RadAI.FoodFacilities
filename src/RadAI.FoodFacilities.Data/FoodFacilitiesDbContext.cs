@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RadAI.FoodFacilities.Domain.Entities;
+using RadAI.FoodFacilities.DTOs.Entities;
 
 namespace RadAI.FoodFacilities.Data
 {
