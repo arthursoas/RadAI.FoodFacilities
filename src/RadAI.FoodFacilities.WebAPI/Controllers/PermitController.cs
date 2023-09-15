@@ -15,12 +15,23 @@ namespace RadAI.FoodFacilities.WebAPI.Controllers
         }
 
         [HttpGet("applicants/{applicant}")]
-        public async Task<ActionResult> ListPermitsByApplicant([FromRoute] string applicant, [FromQuery] string status, CancellationToken cancellationToken)
+        public async Task<ActionResult> ListPermitsByApplicantAsync([FromRoute] string applicant, [FromQuery] string status, CancellationToken cancellationToken)
         {
             var request = new GetPermitByApplicantRequest
             {
                 Applicant = applicant?.Trim(),
                 Status = status?.Trim(),
+            };
+
+            return BuildResponse(await Mediator.Send(request, cancellationToken));
+        }
+
+        [HttpGet("addresses/{address}")]
+        public async Task<ActionResult> ListPermitsByAddressAsync([FromRoute] string address, CancellationToken cancellationToken)
+        {
+            var request = new GetPermitByAddressRequest
+            {
+                Address = address?.Trim()
             };
 
             return BuildResponse(await Mediator.Send(request, cancellationToken));
