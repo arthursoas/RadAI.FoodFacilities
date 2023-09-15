@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
+using RadAI.FoodFacilities.Data;
 using RadAI.FoodFacilities.WebAPI.Configuration;
 using RadAI.FoodFacilities.WebAPI.Settings;
 using System.Reflection;
@@ -35,9 +37,9 @@ namespace RadAI.FoodFacilities.WebAPI
             });
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddSwaggerConfig();
-            //services.AddDbContext<ShopBridgeDbContext>(options =>
-            //    options.UseSqlServer(domainSettings.DatabaseSettings.ConnectionString));
-            //services.AddDataRepositories();
+            services.AddDbContext<FoodFacilitiesDbContext>(options =>
+                options.UseInMemoryDatabase(domainSettings.DatabaseName));
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
