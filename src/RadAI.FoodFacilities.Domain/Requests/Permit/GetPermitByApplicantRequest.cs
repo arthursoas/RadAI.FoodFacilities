@@ -7,9 +7,9 @@ namespace RadAI.FoodFacilities.DTOs.Requests.Permit
 {
     public class GetPermitByApplicantRequest : RequestBase<ResponseBase<GetPermitResponse[]>>
     {
-        public string Applicant { get; set; }
+        public string? Applicant { get; set; }
 
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         public override ValidationResult Validate()
         {

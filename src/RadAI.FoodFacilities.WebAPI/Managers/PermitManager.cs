@@ -2,6 +2,7 @@
 using RadAI.FoodFacilities.DTOs.Entities;
 using RadAI.FoodFacilities.WebAPI.Providers;
 using RadAI.FoodFacilities.WebAPI.Settings;
+using System.Linq.Expressions;
 
 namespace RadAI.FoodFacilities.WebAPI.Managers
 {
@@ -22,10 +23,22 @@ namespace RadAI.FoodFacilities.WebAPI.Managers
             _domainSettings = domainSettings;
         }
 
-        public async Task<ICollection<Permit>> GetPermitsAsync(CancellationToken cancellationToken)
+        public async Task<ICollection<Permit>> GetPermitsAsync(Expression<Func<Permit, bool>> predicate, CancellationToken cancellationToken)
         {
-            return await _dataSFProvider.GetMobileFoodFacilityPermitsAsync(
-                cancellationToken);
+            var now = DateTimeOffset.UtcNow;
+
+            if (!await _permitRepository.AnyAsync(cancellationToken))
+            {
+                var permits = await _dataSFProvider.GetMobileFoodFacilityPermitsAsync(cancellationToken);
+
+                await _permitRepository.RemoveAllAsync(cancellationToken);
+                await _permitRepository.AddRangeAsync(permits, cancellationToken);
+                await _permitRepository.CommitAsync(cancellationToken);
+
+                _lastCacheRefresh = now;
+            }
+
+            return await _permitRepository.ListAsync(predicate, cancellationToken);
         }
     }
 }

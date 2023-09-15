@@ -19,8 +19,8 @@ namespace RadAI.FoodFacilities.WebAPI.Controllers
         {
             var request = new GetPermitByApplicantRequest
             {
-                Applicant = applicant,
-                Status = status,
+                Applicant = applicant?.Trim(),
+                Status = status?.Trim(),
             };
 
             return BuildResponse(await Mediator.Send(request, cancellationToken));
