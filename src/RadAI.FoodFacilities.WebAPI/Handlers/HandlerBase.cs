@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace RadAI.FoodFacilities.WebAPI.Application.Handlers
+namespace RadAI.FoodFacilities.WebAPI.Handlers
 {
     public abstract class HandlerBase
     {

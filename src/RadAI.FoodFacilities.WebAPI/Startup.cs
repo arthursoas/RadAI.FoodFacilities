@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.EntityFrameworkCore;
 using RadAI.FoodFacilities.Data;
 using RadAI.FoodFacilities.WebAPI.Configuration;
 using RadAI.FoodFacilities.WebAPI.Settings;
@@ -20,6 +19,7 @@ namespace RadAI.FoodFacilities.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             var domainSettings = Configuration.GetSection(nameof(DomainSettings)).Get<DomainSettings>();
+            services.AddSingleton<IDomainSettings>(domainSettings);
 
             services
                 .AddControllers()
@@ -37,10 +37,8 @@ namespace RadAI.FoodFacilities.WebAPI
             });
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddSwaggerConfig();
-            services.AddDbContext<FoodFacilitiesDbContext>(options =>
-                options.UseInMemoryDatabase(domainSettings.DatabaseName));
-
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddDataDependencies(domainSettings.DatabaseName);
+            services.AddWebAPIDependencies();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
