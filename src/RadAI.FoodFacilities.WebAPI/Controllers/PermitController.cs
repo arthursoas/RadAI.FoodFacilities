@@ -37,7 +37,7 @@ namespace RadAI.FoodFacilities.WebAPI.Controllers
             return BuildResponse(await Mediator.Send(request, cancellationToken));
         }
 
-        [HttpGet("latitute/{latitude}/longitude/{longitude}")]
+        [HttpGet("latitude/{latitude}/longitude/{longitude}")]
         public async Task<ActionResult> GetPermitsByCoordinatesAsync([FromRoute] double? latitude, [FromRoute] double? longitude, [FromQuery] string status, CancellationToken cancellationToken)
         {
             const string DEFAULT_STATUS = "APPROVED";
