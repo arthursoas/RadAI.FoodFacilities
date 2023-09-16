@@ -3,9 +3,9 @@ using RadAI.FoodFacilities.DTOs.Requests.Permit;
 
 namespace RadAI.FoodFacilities.DTOs.Validations.Permit
 {
-    public class GetPermitByAddressValidation : AbstractValidator<GetPermitByAddressRequest>
+    public class GetPermitsByAddressValidation : AbstractValidator<GetPermitsByAddressRequest>
     {
-        public GetPermitByAddressValidation()
+        public GetPermitsByAddressValidation()
         {
             RuleFor(p => p.Address)
                 .NotEmpty()

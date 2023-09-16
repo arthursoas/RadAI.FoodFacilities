@@ -19,8 +19,10 @@ namespace RadAI.FoodFacilities.DTOs.Entities
 
         public string? Status { get; set; }
 
-        public string? Latitude { get; set; }
+        [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public double Latitude { get; set; }
 
-        public string? Longitude { get; set; }
+        [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+        public double Longitude { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using RadAI.FoodFacilities.WebAPI.Managers;
 using RadAI.FoodFacilities.WebAPI.Providers;
+using RadAI.FoodFacilities.WebAPI.Utils;
 
 namespace RadAI.FoodFacilities.WebAPI
 {
@@ -10,6 +11,7 @@ namespace RadAI.FoodFacilities.WebAPI
             services
                 .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
                 .AddSingleton<IDataSFProvider, DataSFProvider>()
+                .AddSingleton<IDateTimeOffset, DateTimeOffserWrapper>()
                 .AddScoped<IPermitManager, PermitManager>();
 
             services.AddHttpClient("datasf");

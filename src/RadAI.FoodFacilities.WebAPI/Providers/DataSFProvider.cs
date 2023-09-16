@@ -1,5 +1,6 @@
 ﻿using RadAI.FoodFacilities.DTOs.Entities;
 using RadAI.FoodFacilities.WebAPI.Settings;
+using RadAI.FoodFacilities.WebAPI.Utils;
 using System.Text.Json;
 
 namespace RadAI.FoodFacilities.WebAPI.Providers
@@ -8,13 +9,18 @@ namespace RadAI.FoodFacilities.WebAPI.Providers
     {
         private readonly HttpClient _httpClient;
         private readonly IDomainSettings _domainSettings;
+        private readonly IDateTimeOffset _dateTimeOffset;
+
+        public DateTimeOffset LastGetMobileFoodFacilityPermitsRequest { get; set; }
 
         public DataSFProvider(
             IHttpClientFactory httpClientFactory,
-            IDomainSettings domainSettings)
+            IDomainSettings domainSettings,
+            IDateTimeOffset dateTimeOffset)
         {
             _httpClient = httpClientFactory.CreateClient("datasf");
             _domainSettings = domainSettings;
+            _dateTimeOffset = dateTimeOffset;
         }
 
         public async Task<ICollection<Permit>> GetMobileFoodFacilityPermitsAsync(CancellationToken cancellationToken)
@@ -29,6 +35,8 @@ namespace RadAI.FoodFacilities.WebAPI.Providers
                     inner: null,
                     statusCode: responseMessage.StatusCode);
             }
+
+            LastGetMobileFoodFacilityPermitsRequest = _dateTimeOffset.UtcNow;
 
             var jsonOptions = new JsonSerializerOptions
             {

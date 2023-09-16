@@ -16,9 +16,9 @@
 
         public string Status { get; set; }
 
-        public string Latitude { get; set; }
+        public double Latitude { get; set; }
 
-        public string Longitude { get; set; }
+        public double Longitude { get; set; }
 
         public static GetPermitResponse FromPermit(Entities.Permit permit)
         {

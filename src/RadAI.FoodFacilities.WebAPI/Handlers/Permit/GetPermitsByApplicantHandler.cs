@@ -8,17 +8,17 @@ using PermitEntity = RadAI.FoodFacilities.DTOs.Entities.Permit;
 
 namespace RadAI.FoodFacilities.WebAPI.Handlers.Permit
 {
-    public class GetPermitByApplicantHandler : HandlerBase, IRequestHandler<GetPermitByApplicantRequest, ResponseBase<GetPermitResponse[]>>
+    public class GetPermitsByApplicantHandler : HandlerBase, IRequestHandler<GetPermitsByApplicantRequest, ResponseBase<GetPermitResponse[]>>
     {
         private readonly IPermitManager _permitManager;
 
-        public GetPermitByApplicantHandler(
+        public GetPermitsByApplicantHandler(
             IPermitManager permitManager)
         {
             _permitManager = permitManager;
         }
 
-        public async Task<ResponseBase<GetPermitResponse[]>> Handle(GetPermitByApplicantRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseBase<GetPermitResponse[]>> Handle(GetPermitsByApplicantRequest request, CancellationToken cancellationToken)
         {
             var response = new ResponseBase<GetPermitResponse[]>();
             var validation = request.Validate();

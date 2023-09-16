@@ -19,22 +19,22 @@ namespace RadAI.FoodFacilities.Data.Repositories
         public Task<bool> AnyAsync(CancellationToken cancellationToken);
 
         /// <summary>
-        /// Add a colletion of permits to the database
+        /// Add a colletion of entities to the database
         /// </summary>
-        /// <param name="permits">Collection of permits</param>
+        /// <param name="entities">Collection of entities</param>
         /// <param name="cancellationToken">Cancelaation token</param>
         public Task AddRangeAsync(ICollection<TEntity> entities, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Get permits that matches an expression
+        /// Get entities that matches an expression
         /// </summary>
-        /// <param name="predicate">Expression to filter permits</param>
+        /// <param name="predicate">Expression to filter entities</param>
         /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>Collection of permits</returns>
+        /// <returns>Collection of entities</returns>
         public Task<ICollection<TEntity>> ListAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Remove all permits from the database
+        /// Remove all entities from the database
         /// </summary>
         /// <param name="cancellationToken">Cancellation token</param>
         public Task RemoveAllAsync(CancellationToken cancellationToken);

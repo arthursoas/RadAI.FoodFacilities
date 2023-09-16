@@ -15,9 +15,9 @@ namespace RadAI.FoodFacilities.WebAPI.Controllers
         }
 
         [HttpGet("applicants/{applicant}")]
-        public async Task<ActionResult> ListPermitsByApplicantAsync([FromRoute] string applicant, [FromQuery] string status, CancellationToken cancellationToken)
+        public async Task<ActionResult> GetPermitsByApplicantAsync([FromRoute] string applicant, [FromQuery] string status, CancellationToken cancellationToken)
         {
-            var request = new GetPermitByApplicantRequest
+            var request = new GetPermitsByApplicantRequest
             {
                 Applicant = applicant?.Trim(),
                 Status = status?.Trim(),
@@ -27,11 +27,28 @@ namespace RadAI.FoodFacilities.WebAPI.Controllers
         }
 
         [HttpGet("addresses/{address}")]
-        public async Task<ActionResult> ListPermitsByAddressAsync([FromRoute] string address, CancellationToken cancellationToken)
+        public async Task<ActionResult> GetPermitsByAddressAsync([FromRoute] string address, CancellationToken cancellationToken)
         {
-            var request = new GetPermitByAddressRequest
+            var request = new GetPermitsByAddressRequest
             {
                 Address = address?.Trim()
+            };
+
+            return BuildResponse(await Mediator.Send(request, cancellationToken));
+        }
+
+        [HttpGet("latitute/{latitude}/longitude/{longitude}")]
+        public async Task<ActionResult> GetPermitsByCoordinatesAsync([FromRoute] double? latitude, [FromRoute] double? longitude, [FromQuery] string status, CancellationToken cancellationToken)
+        {
+            const string DEFAULT_STATUS = "APPROVED";
+            const string DEFAULT_FACILITY_TYPE = "TRUCK";
+
+            var request = new GetPermitsByCoordinateRequest
+            {
+                Latitude = latitude,
+                Longitude = longitude,
+                Status = status ?? DEFAULT_STATUS,
+                FacilityType = DEFAULT_FACILITY_TYPE
             };
 
             return BuildResponse(await Mediator.Send(request, cancellationToken));

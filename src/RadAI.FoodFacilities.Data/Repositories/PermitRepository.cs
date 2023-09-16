@@ -1,4 +1,6 @@
-﻿using RadAI.FoodFacilities.DTOs.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using RadAI.FoodFacilities.DTOs.Entities;
+using System.Linq.Expressions;
 
 namespace RadAI.FoodFacilities.Data.Repositories
 {
@@ -6,6 +8,15 @@ namespace RadAI.FoodFacilities.Data.Repositories
     {
         public PermitRepository(FoodFacilitiesDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public async Task<ICollection<Permit>> GetByDistanceAsync(Expression<Func<Permit, bool>> predicate, double latitude, double longitude, int take, CancellationToken cancellationToken)
+        {
+            return await DbSet
+                .Where(predicate)
+                .OrderBy(p => (latitude - p.Latitude) * (latitude - p.Latitude) + (longitude - p.Longitude) * (longitude - p.Longitude))
+                .Take(take)
+                .ToListAsync(cancellationToken);
         }
     }
 }

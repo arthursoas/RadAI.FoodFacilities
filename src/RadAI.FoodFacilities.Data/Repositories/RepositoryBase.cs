@@ -43,8 +43,8 @@ namespace RadAI.FoodFacilities.Data.Repositories
 
         public async Task RemoveAllAsync(CancellationToken cancellationToken)
         {
-            var permits = await DbSet.ToListAsync(cancellationToken);
-            DbSet.RemoveRange(permits);
+            var entities = await DbSet.ToListAsync(cancellationToken);
+            DbSet.RemoveRange(entities);
         }
     }
 }

@@ -5,7 +5,7 @@ using RadAI.FoodFacilities.DTOs.Validations.Permit;
 
 namespace RadAI.FoodFacilities.DTOs.Requests.Permit
 {
-    public class GetPermitByApplicantRequest : RequestBase<ResponseBase<GetPermitResponse[]>>
+    public class GetPermitsByApplicantRequest : RequestBase<ResponseBase<GetPermitResponse[]>>
     {
         public string? Applicant { get; set; }
 
@@ -13,7 +13,7 @@ namespace RadAI.FoodFacilities.DTOs.Requests.Permit
 
         public override ValidationResult Validate()
         {
-            return new GetPermitByApplicantValidation().Validate(this);
+            return new GetPermitsByApplicantValidation().Validate(this);
         }
     }
 }
