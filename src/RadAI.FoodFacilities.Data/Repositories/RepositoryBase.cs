@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RadAI.FoodFacilities.DTOs.Entities;
 using System.Linq.Expressions;
 
 namespace RadAI.FoodFacilities.Data.Repositories
@@ -31,12 +30,9 @@ namespace RadAI.FoodFacilities.Data.Repositories
             await DbSet.AddRangeAsync(entities, cancellationToken);
         }
 
-        public async Task<ICollection<TEntity>> ListAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
+        public async Task<ICollection<TEntity>> ListAsync(Expression<Func<TEntity, bool>>? predicate, CancellationToken cancellationToken)
         {
-            if (predicate == null)
-            {
-                predicate = e => true;
-            }
+            predicate ??= e => true;
 
             return await DbSet.Where(predicate).ToListAsync(cancellationToken);
         }

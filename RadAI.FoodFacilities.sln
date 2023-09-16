@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadAI.FoodFacilities.DTOs",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadAI.FoodFacilities.Data", "src\RadAI.FoodFacilities.Data\RadAI.FoodFacilities.Data.csproj", "{1D1D571F-7CBB-4E6C-B1BB-7870F8EC28A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{309B251A-31FA-4C81-A012-AC698FDBF8DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadAI.FoodFacilities.Data.Tests", "src\Tests\RadAI.FoodFacilities.Data.Tests\RadAI.FoodFacilities.Data.Tests.csproj", "{92ED6930-3752-445A-A2B9-47FCF89AF424}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{1D1D571F-7CBB-4E6C-B1BB-7870F8EC28A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D1D571F-7CBB-4E6C-B1BB-7870F8EC28A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D1D571F-7CBB-4E6C-B1BB-7870F8EC28A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92ED6930-3752-445A-A2B9-47FCF89AF424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92ED6930-3752-445A-A2B9-47FCF89AF424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92ED6930-3752-445A-A2B9-47FCF89AF424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92ED6930-3752-445A-A2B9-47FCF89AF424}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{92ED6930-3752-445A-A2B9-47FCF89AF424} = {309B251A-31FA-4C81-A012-AC698FDBF8DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D09BF1E4-75E7-4915-BA6C-0D351E577810}

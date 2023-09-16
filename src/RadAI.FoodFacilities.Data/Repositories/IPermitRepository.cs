@@ -14,6 +14,6 @@ namespace RadAI.FoodFacilities.Data.Repositories
         /// <param name="take">Number of permits</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Collection of permits</returns>
-        public Task<ICollection<Permit>> GetByDistanceAsync(Expression<Func<Permit, bool>> predicate, double latitude, double longitude, int take, CancellationToken cancellationToken);
+        public Task<ICollection<Permit>> GetByDistanceAsync(Expression<Func<Permit, bool>>? predicate, double latitude, double longitude, int take, CancellationToken cancellationToken);
     }
 }

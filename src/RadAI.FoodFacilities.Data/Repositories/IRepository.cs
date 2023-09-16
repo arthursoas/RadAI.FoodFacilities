@@ -31,7 +31,7 @@ namespace RadAI.FoodFacilities.Data.Repositories
         /// <param name="predicate">Expression to filter entities</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Collection of entities</returns>
-        public Task<ICollection<TEntity>> ListAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
+        public Task<ICollection<TEntity>> ListAsync(Expression<Func<TEntity, bool>>? predicate, CancellationToken cancellationToken);
 
         /// <summary>
         /// Remove all entities from the database

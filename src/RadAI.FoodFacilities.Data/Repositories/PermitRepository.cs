@@ -10,8 +10,10 @@ namespace RadAI.FoodFacilities.Data.Repositories
         {
         }
 
-        public async Task<ICollection<Permit>> GetByDistanceAsync(Expression<Func<Permit, bool>> predicate, double latitude, double longitude, int take, CancellationToken cancellationToken)
+        public async Task<ICollection<Permit>> GetByDistanceAsync(Expression<Func<Permit, bool>>? predicate, double latitude, double longitude, int take, CancellationToken cancellationToken)
         {
+            predicate ??= e => true;
+
             return await DbSet
                 .Where(predicate)
                 .OrderBy(p => (latitude - p.Latitude) * (latitude - p.Latitude) + (longitude - p.Longitude) * (longitude - p.Longitude))
