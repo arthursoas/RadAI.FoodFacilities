@@ -26,14 +26,14 @@ namespace RadAI.FoodFacilities.WebAPI.Managers
             _dateTimeOffset = dateTimeOffset;
         }
 
-        public async Task<ICollection<Permit>> GetPermitsAsync(Expression<Func<Permit, bool>> predicate, CancellationToken cancellationToken)
+        public async Task<ICollection<Permit>> GetPermitsAsync(Expression<Func<Permit, bool>>? predicate, CancellationToken cancellationToken)
         {
             await EnsureUpToDateCacheAsync(cancellationToken);
 
             return await _permitRepository.ListAsync(predicate, cancellationToken);
         }
 
-        public async Task<ICollection<Permit>> GetPermitsByDistanceAsync(Expression<Func<Permit, bool>> predicate, double latitude, double longitude, int take, CancellationToken cancellationToken)
+        public async Task<ICollection<Permit>> GetPermitsByDistanceAsync(Expression<Func<Permit, bool>>? predicate, double latitude, double longitude, int take, CancellationToken cancellationToken)
         {
             await EnsureUpToDateCacheAsync(cancellationToken);
 

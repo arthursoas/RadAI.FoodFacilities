@@ -11,7 +11,7 @@ namespace RadAI.FoodFacilities.WebAPI.Managers
         /// <param name="predicate">Expression to filter permits</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Collection of permits</returns>
-        Task<ICollection<Permit>> GetPermitsAsync(Expression<Func<Permit, bool>> predicate, CancellationToken cancellationToken);
+        Task<ICollection<Permit>> GetPermitsAsync(Expression<Func<Permit, bool>>? predicate, CancellationToken cancellationToken);
 
         /// <summary>
         /// Get a collection of permits close to a coordinate
@@ -22,6 +22,6 @@ namespace RadAI.FoodFacilities.WebAPI.Managers
         /// <param name="take">Number of permits to get</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Collection of permits</returns>
-        Task<ICollection<Permit>> GetPermitsByDistanceAsync(Expression<Func<Permit, bool>> predicate, double latitude, double longitude, int take, CancellationToken cancellationToken);
+        Task<ICollection<Permit>> GetPermitsByDistanceAsync(Expression<Func<Permit, bool>>? predicate, double latitude, double longitude, int take, CancellationToken cancellationToken);
     }
 }
