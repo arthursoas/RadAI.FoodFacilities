@@ -1,8 +1,8 @@
 # 🍔 Food Facilities Web API Critique
 
-## What is missing
+## What could be added
 
-Two accessory artifacts are missing on this project to it be considered production-ready for me:
+Two artifacts are missing on this project to it be considered fully production-ready:
 
 - A log system. For example, a log package connected with Grafana or Datalust Seq.
 - Integration tests. Important to validate correct dependency injection and test coverage for controllers.
