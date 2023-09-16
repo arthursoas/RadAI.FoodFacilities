@@ -17,12 +17,34 @@ namespace RadAI.FoodFacilities.DTOs.Entities
 
         public string? Address { get; set; }
 
+        public string? BlockLot { get; set; }
+
+        public string? Block { get; set; }
+
+        public string? Lot { get; set; }
+
+        [JsonPropertyName("permit")]
+        public string? CurrentPermit { get; set; }
+
         public string? Status { get; set; }
+
+        public string? X { get; set; }
+
+        public string? Y { get; set; }
+
 
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
         public double Latitude { get; set; }
 
         [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
         public double Longitude { get; set; }
+
+        public string? Schedule { get; set; }
+
+        public string? Received { get; set; }
+
+        public string? PriorPermit { get; set; }
+
+        public string? ExpirationDate { get; set; }
     }
 }
