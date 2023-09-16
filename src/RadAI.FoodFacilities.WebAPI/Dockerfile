@@ -7,10 +7,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["RadAI.FoodFacilities.WebAPI/RadAI.FoodFacilities.WebAPI.csproj", "RadAI.FoodFacilities.WebAPI/"]
-RUN dotnet restore "RadAI.FoodFacilities.WebAPI/RadAI.FoodFacilities.WebAPI.csproj"
+COPY ["src/RadAI.FoodFacilities.WebAPI/RadAI.FoodFacilities.WebAPI.csproj", "src/RadAI.FoodFacilities.WebAPI/"]
+COPY ["src/RadAI.FoodFacilities.Data/RadAI.FoodFacilities.Data.csproj", "src/RadAI.FoodFacilities.Data/"]
+COPY ["src/RadAI.FoodFacilities.DTOs/RadAI.FoodFacilities.DTOs.csproj", "src/RadAI.FoodFacilities.DTOs/"]
+RUN dotnet restore "src/RadAI.FoodFacilities.WebAPI/RadAI.FoodFacilities.WebAPI.csproj"
 COPY . .
-WORKDIR "/src/RadAI.FoodFacilities.WebAPI"
+WORKDIR "/src/src/RadAI.FoodFacilities.WebAPI"
 RUN dotnet build "RadAI.FoodFacilities.WebAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish

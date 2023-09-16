@@ -1,11 +1,11 @@
 version: "3.4"
 services:
-  posterr-web-api:
-    container_name: posterr
+  foodfacilities-web-api:
+    container_name: foodfacilities
     image: foodfacilities-web-api
     build:
       context: ../
-      dockerfile: ./src/RadAI.FoodFacilites.WebAPI/Dockerfile
+      dockerfile: ./src/RadAI.FoodFacilities.WebAPI/Dockerfile
     ports:
       - "5000:80"
       - "5111:443"
