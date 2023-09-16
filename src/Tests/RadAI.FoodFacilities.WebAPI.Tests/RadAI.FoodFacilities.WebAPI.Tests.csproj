@@ -27,4 +27,8 @@
     <ProjectReference Include="..\..\RadAI.FoodFacilities.WebAPI\RadAI.FoodFacilities.WebAPI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Providers\" />
+  </ItemGroup>
+
 </Project>

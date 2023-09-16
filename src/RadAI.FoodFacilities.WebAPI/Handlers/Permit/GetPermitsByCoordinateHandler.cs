@@ -8,11 +8,11 @@ using PermitEntity = RadAI.FoodFacilities.DTOs.Entities.Permit;
 
 namespace RadAI.FoodFacilities.WebAPI.Handlers.Permit
 {
-    public class GetPermitsByCoordinateHandlers : HandlerBase, IRequestHandler<GetPermitsByCoordinateRequest, ResponseBase<GetPermitResponse[]>>
+    public class GetPermitsByCoordinateHandler : HandlerBase, IRequestHandler<GetPermitsByCoordinateRequest, ResponseBase<GetPermitResponse[]>>
     {
         private readonly IPermitManager _permitManager;
 
-        public GetPermitsByCoordinateHandlers(
+        public GetPermitsByCoordinateHandler(
             IPermitManager permitManager)
         {
             _permitManager = permitManager;
