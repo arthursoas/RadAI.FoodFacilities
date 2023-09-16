@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RadAI.FoodFacilities.Data\RadAI.FoodFacilities.Data.csproj" />
-    <ProjectReference Include="..\RadAI.FoodFacilities.Domain\RadAI.FoodFacilities.DTOs.csproj" />
+    <ProjectReference Include="..\RadAI.FoodFacilities.DTOs\RadAI.FoodFacilities.DTOs.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RadAI.FoodFacilities.Domain\RadAI.FoodFacilities.DTOs.csproj" />
+    <ProjectReference Include="..\..\RadAI.FoodFacilities.DTOs\RadAI.FoodFacilities.DTOs.csproj" />
   </ItemGroup>
 
 </Project>
