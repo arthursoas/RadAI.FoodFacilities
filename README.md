@@ -50,4 +50,10 @@ The critique section is available at `/docs/CRITIQUE.md`
 
 ---
 
+## Time spent
+
+It was spent ~ 6 hours developing this solution.
+
+---
+
 If you have any questions, please contact me by email [arthur@arthursoares.dev](mailto:arthur@arthursoares.dev).
