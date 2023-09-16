@@ -27,8 +27,4 @@
     <ProjectReference Include="..\RadAI.FoodFacilities.Domain\RadAI.FoodFacilities.DTOs.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\" />
-  </ItemGroup>
-
 </Project>
