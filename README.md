@@ -41,6 +41,7 @@ The API swagger will automatically open on your default browser.
 ## Documentation
 
 Detailed information about what this project is about and the stack used is available at `/docs/DOCUMENTATION.md`.
+
 Detailed information about the web API endpoints is available at `/docs/REQUESTS.md`.
 
 ---
