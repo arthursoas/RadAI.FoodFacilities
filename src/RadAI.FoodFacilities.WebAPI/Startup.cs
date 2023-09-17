@@ -46,7 +46,6 @@ namespace RadAI.FoodFacilities.WebAPI
             app.UseSwaggerConfig();
             app.UseRouting();
             app.UseCors("All");
-            app.UseMiddleware<AuthenticationMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
