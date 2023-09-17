@@ -54,7 +54,7 @@ The critique section is available at `/docs/CRITIQUE.md`
 
 ## Time spent
 
-It was spent ~ 6 hours developing this solution.
+It was spent ~ 8 hours developing this solution.
 
 ---
 
