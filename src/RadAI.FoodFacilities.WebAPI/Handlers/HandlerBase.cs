@@ -9,20 +9,22 @@ namespace RadAI.FoodFacilities.WebAPI.Handlers
         where TRequest : RequestBase<TResponse>
         where TResponse : class
     {
+        protected ResponseBase<TResponse>? Response;
+
         public async Task<ResponseBase<TResponse>> Handle(TRequest request, CancellationToken cancellationToken)
         {
-            var response = new ResponseBase<TResponse>();
+            Response = new ResponseBase<TResponse>();
             var validation = request.Validate();
 
             if (!validation.IsValid)
             {
-                response.ValidationResult = validation;
-                return response;
+                Response.ValidationResult = validation;
+                return Response;
             }
 
-            response.Payload = await HandleAsync(request, cancellationToken);
+            Response.Payload = await HandleAsync(request, cancellationToken);
 
-            return response;
+            return Response;
         }
 
         public abstract Task<TResponse> HandleAsync(TRequest request, CancellationToken cancellationToken);
