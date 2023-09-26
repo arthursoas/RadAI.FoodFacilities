@@ -1,5 +1,4 @@
-﻿using MediatR;
-using RadAI.FoodFacilities.DTOs.Requests.Permit;
+﻿using RadAI.FoodFacilities.DTOs.Requests.Permit;
 using RadAI.FoodFacilities.DTOs.Responses;
 using RadAI.FoodFacilities.DTOs.Responses.Permit;
 using RadAI.FoodFacilities.WebAPI.Managers;
@@ -8,7 +7,7 @@ using PermitEntity = RadAI.FoodFacilities.DTOs.Entities.Permit;
 
 namespace RadAI.FoodFacilities.WebAPI.Handlers.Permit
 {
-    public class GetPermitsByApplicantHandler : HandlerBase, IRequestHandler<GetPermitsByApplicantRequest, ResponseBase<GetPermitResponse[]>>
+    public class GetPermitsByApplicantHandler : HandlerBase<GetPermitsByApplicantRequest, GetPermitResponse[]>
     {
         private readonly IPermitManager _permitManager;
 
@@ -18,16 +17,9 @@ namespace RadAI.FoodFacilities.WebAPI.Handlers.Permit
             _permitManager = permitManager;
         }
 
-        public async Task<ResponseBase<GetPermitResponse[]>> Handle(GetPermitsByApplicantRequest request, CancellationToken cancellationToken)
+        public override async Task<ResponseBase<GetPermitResponse[]>> HandleAsync(GetPermitsByApplicantRequest request, CancellationToken cancellationToken)
         {
             var response = new ResponseBase<GetPermitResponse[]>();
-            var validation = request.Validate();
-
-            if (!validation.IsValid)
-            {
-                response.ValidationResult = validation;
-                return response;
-            }
 
             Expression<Func<PermitEntity, bool>> predicate;
             if (request.Status == null)
