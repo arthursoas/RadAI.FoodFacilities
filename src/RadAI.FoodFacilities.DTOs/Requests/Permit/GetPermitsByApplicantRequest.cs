@@ -1,11 +1,10 @@
 ﻿using FluentValidation.Results;
-using RadAI.FoodFacilities.DTOs.Responses;
 using RadAI.FoodFacilities.DTOs.Responses.Permit;
 using RadAI.FoodFacilities.DTOs.Validations.Permit;
 
 namespace RadAI.FoodFacilities.DTOs.Requests.Permit
 {
-    public class GetPermitsByApplicantRequest : RequestBase<ResponseBase<GetPermitResponse[]>>
+    public class GetPermitsByApplicantRequest : RequestBase<GetPermitResponse[]>
     {
         public string? Applicant { get; set; }
 

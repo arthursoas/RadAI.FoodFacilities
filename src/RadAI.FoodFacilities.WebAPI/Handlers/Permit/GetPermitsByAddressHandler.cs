@@ -1,5 +1,4 @@
 ﻿using RadAI.FoodFacilities.DTOs.Requests.Permit;
-using RadAI.FoodFacilities.DTOs.Responses;
 using RadAI.FoodFacilities.DTOs.Responses.Permit;
 using RadAI.FoodFacilities.WebAPI.Managers;
 using System.Linq.Expressions;
@@ -17,20 +16,15 @@ namespace RadAI.FoodFacilities.WebAPI.Handlers.Permit
             _permitManager = permitManager;
         }
 
-        public override async Task<ResponseBase<GetPermitResponse[]>> HandleAsync(GetPermitsByAddressRequest request, CancellationToken cancellationToken)
+        public override async Task<GetPermitResponse[]> HandleAsync(GetPermitsByAddressRequest request, CancellationToken cancellationToken)
         {
-            var response = new ResponseBase<GetPermitResponse[]>();
-
             Expression<Func<PermitEntity, bool>> predicate = (p) => 
                 p.Address != null &&
                 p.Address.Contains(request.Address, StringComparison.OrdinalIgnoreCase);
            
             var permits = await _permitManager.GetPermitsAsync(predicate, cancellationToken);
 
-            return new ResponseBase<GetPermitResponse[]>
-            {
-                Payload = permits.Select(p => GetPermitResponse.FromPermit(p)).ToArray()
-            };
+            return permits.Select(p => GetPermitResponse.FromPermit(p)).ToArray();
         }
     }
 }

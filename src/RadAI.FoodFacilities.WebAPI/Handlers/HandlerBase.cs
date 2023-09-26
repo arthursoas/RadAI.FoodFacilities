@@ -5,13 +5,13 @@ using RadAI.FoodFacilities.DTOs.Responses;
 
 namespace RadAI.FoodFacilities.WebAPI.Handlers
 {
-    public abstract class HandlerBase<TRequest, TResponsePayload> : IRequestHandler<TRequest, ResponseBase<TResponsePayload>>
-        where TRequest : RequestBase<ResponseBase<TResponsePayload>>
-        where TResponsePayload : class
+    public abstract class HandlerBase<TRequest, TResponse> : IRequestHandler<TRequest, ResponseBase<TResponse>>
+        where TRequest : RequestBase<TResponse>
+        where TResponse : class
     {
-        public async Task<ResponseBase<TResponsePayload>> Handle(TRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseBase<TResponse>> Handle(TRequest request, CancellationToken cancellationToken)
         {
-            var response = new ResponseBase<TResponsePayload>();
+            var response = new ResponseBase<TResponse>();
             var validation = request.Validate();
 
             if (!validation.IsValid)
@@ -20,10 +20,12 @@ namespace RadAI.FoodFacilities.WebAPI.Handlers
                 return response;
             }
 
-            return await HandleAsync(request, cancellationToken);
+            response.Payload = await HandleAsync(request, cancellationToken);
+
+            return response;
         }
 
-        public abstract Task<ResponseBase<TResponsePayload>> HandleAsync(TRequest request, CancellationToken cancellationToken);
+        public abstract Task<TResponse> HandleAsync(TRequest request, CancellationToken cancellationToken);
 
         public static ValidationFailure BuildError(string message)
         {

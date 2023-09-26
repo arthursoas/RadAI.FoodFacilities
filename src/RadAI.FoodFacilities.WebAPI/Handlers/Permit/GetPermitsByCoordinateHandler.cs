@@ -1,5 +1,4 @@
 ﻿using RadAI.FoodFacilities.DTOs.Requests.Permit;
-using RadAI.FoodFacilities.DTOs.Responses;
 using RadAI.FoodFacilities.DTOs.Responses.Permit;
 using RadAI.FoodFacilities.WebAPI.Managers;
 using System.Linq.Expressions;
@@ -17,10 +16,8 @@ namespace RadAI.FoodFacilities.WebAPI.Handlers.Permit
             _permitManager = permitManager;
         }
 
-        public override async Task<ResponseBase<GetPermitResponse[]>> HandleAsync(GetPermitsByCoordinateRequest request, CancellationToken cancellationToken)
+        public override async Task<GetPermitResponse[]> HandleAsync(GetPermitsByCoordinateRequest request, CancellationToken cancellationToken)
         {
-            var response = new ResponseBase<GetPermitResponse[]>();
-
             const int DEAFULT_LIMIT = 5;
 
             Expression<Func<PermitEntity, bool>> predicate = (p) =>
@@ -35,10 +32,7 @@ namespace RadAI.FoodFacilities.WebAPI.Handlers.Permit
                 DEAFULT_LIMIT,
                 cancellationToken);
 
-            return new ResponseBase<GetPermitResponse[]>
-            {
-                Payload = permits.Select(p => GetPermitResponse.FromPermit(p)).ToArray()
-            };
+            return permits.Select(p => GetPermitResponse.FromPermit(p)).ToArray();
         }
     }
 }
